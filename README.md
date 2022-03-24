@@ -8,7 +8,7 @@ To complete this challenge you will need to:
 
 ## API development
 ### Description
-They habe been always here, but we have never seen them. This API will be used by the Human Air Forces to defend the world against the alian invasion.
+They have been always here, but we have never seen them. This API will be used by the Human Air Forces to defend the world against the alian invasion.
 
 The API needs to have three entities:
 - Mothership {ship capacity: 9}
@@ -29,7 +29,7 @@ Ships has Mana CrewMembers.
 - Given that the officer wants to add a crew member, when he sends the name of the member and the ship he wants to add, then the crew member is added if the ship contains less than 5 crew members
 - When that the officer tries to add more ships or crew members than the capacities, then an error is raised pointing out what is wrong
 - Given that the officer wants to switch a crew member between the ships, when he sends the from_ship and the to_ship and the name of the crew member, then the action will be allowed only if the from_ship will not remain with no crew members and the to_ship will not exceed the capacity
-## Definition of Done
+### Definition of Done
 Complete the following checklist
 1. Use the [Django Styleguide](https://github.com/HackSoftware/Django-Styleguide) as reference
 2. Remove duplicated or unnecessary code
