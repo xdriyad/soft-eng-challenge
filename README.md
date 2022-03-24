@@ -6,38 +6,46 @@ To complete this challenge you will need to:
 - Deploy it on GCP using Terraform.
 - Implement CI pipelines for both Django and Terraform.
 
-## Requeriments
-### API
+## Description
 They habe been always here, but we have never seen them. This API will be used by the Human Air Forces to defend the world against the alian invasion.
 
-- Mothership
-- Ship
+The API needs to have three entities:
+- Mothership {ship capacity: 9}
+- Ship {crew member capacity: 5}
 - CrewMember
 
 Mothership has many ships.
 Ships has Mana CrewMembers.
+## Requeriments
+- Python ^3.9
+- Poetry ^1.1.12
+- Django ^3.2.12
+
 ### Terraform
 
 ## Acceptance criteria
-Using the template Given/When/Then describe clearly which behaviors are being expected.
-- The frontend wants to change the php settings then they will send a request to the route `apps/<app_id>/settings` with the request body and then they will receive an operation_id.
+- Given that the officer wants to add a mothership, when he adds a mothership, then the mothership will be created with three ships
+- Given that the mothership was created, when the ship is created, then ship will create three crew members
+- Given that the officer wants to add a ship to a mothership, when he sends which mother ship and how much ships he wants to add, then ships will be created with three crew members each one if the mothership contains less than 9 ships
+- Given that the officer wants to remove a ship, when he tries he send which ship he wants to remove, then the ship will will be removed only if the ship has no crew members
+- Given that the officer wants to add a crew member, when he sends the name of the member and the ship he wants to add, then the crew member is added if the ship contains less than 5 crew members
+- When that the officer tries to add more ships or crew members than the capacities, then an error is raised pointing out what is wrong
+- Given that the officer wants to switch a crew member between the ships, when he sends the from_ship and the to_ship and the name of the crew member, then the action will be allowed only if the from_ship will not remain with no crew members and the to_ship will not exceed the capacity
+
+
 ## Definition of Done
 Complete the following checklist
-1. check the code (technical review)
-2. Use the [Django Styleguide](https://github.com/HackSoftware/Django-Styleguide) as reference
-3. Remove duplicated or unnecessary code
-4. Avoid hardcoded values
-5. No unnecessary comments
-6. Sufficient logging with proper logger
-7. Unit test implemented checking custom behaviors and business rules
-8. Update a ENDPOINTS.md file describing (If applicable)
-    1. Django app name
-    2. Action | route
-    3. TAG: Draft | Publish
-    4. Description
-    5. URL Parameters
-    6. Request Params
-    7. Request body
-    8. Response body
-    9. Status code
+1. Use the [Django Styleguide](https://github.com/HackSoftware/Django-Styleguide) as reference
+2. Remove duplicated or unnecessary code
+3. Avoid hardcoded values
+4. No unnecessary comments
+5. Unit test implemented checking custom behaviors and business rules
+6. API Documentation
+    1. Action | route
+    2. Description
+    3. URL Parameters
+    4. Request Params
+    5. Request body
+    6. Response body
+    7. Status code
 
