@@ -4,8 +4,7 @@ Challenge for selecting Software engineers.
 To complete this challenge you will need to:
 - Fork this repository.
 - Create a Django application.
-- Deploy it on GCP using Terraform.
-- Implement CI pipelines for both Django and Terraform.
+- Implement CI pipeline Django.
 
 ## API development
 ### Description
