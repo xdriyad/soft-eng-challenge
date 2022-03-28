@@ -45,26 +45,3 @@ Complete the following checklist
     5. Request body
     6. Response body
     7. Status code
-
-## Terraform
-### Acceptance Criteria
-- Deploy API.
-- Make API reachable from internet using Load Balancer.
-- Deploy Database.
-- If you need any service account in the API give it the least privileges possible.
-- Use terraform to deploy your application on GCP.
-- You can use any GCP service you want, but would be a bonus if you use CloudRun.
-- Migrations should run using automation.
-- Create docker-compose to make it easy to run the application locally (it should include the api container).
-- Test your terraform code using terratest.
-- Build CI pipeline using Github Actions to run terratest.
-
-### Definition of Done
-Complete the following checklist
-1. Use Terraform latest version.
-2. Use terraform fmt to style the code.
-3. Remove any unused variables.
-4. Remove any unused resources.
-5. No code replication.
-6. No hardcoded values.
-7. Use Golang latest version.
