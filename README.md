@@ -28,7 +28,7 @@ Ships has Mana CrewMembers.
 - Given that the officer wants to add a ship to a mothership, when he sends which mother ship and how much ships he wants to add, then ships will be created with three crew members each one if the mothership contains less than 9 ships
 - Given that the officer wants to remove a ship, when he tries he send which ship he wants to remove, then the ship will will be removed along with all its crew members
 - Given that the officer wants to add a crew member, when he sends the name of the member and the ship he wants to add, then the crew member is added if the ship contains less than 5 crew members
-- When that the officer tries to add more ships or crew members than the capacities, then an error is raised pointing out what is wrong
+- When the officer tries to add more ships or crew members over the capacities, then an error is raised pointing out what is wrong
 - Given that the officer wants to switch a crew member between the ships, when he sends the from_ship and the to_ship and the name of the crew member, then the action will be allowed only if the from_ship will not remain with no crew members and the to_ship will not exceed the capacity
 ### Definition of Done
 Complete the following checklist
