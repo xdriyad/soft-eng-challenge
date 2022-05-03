@@ -1,7 +1,6 @@
+import names
 from django.core.exceptions import ValidationError
 from django.db import models
-import names
-# Create your models here.
 from django.utils import timezone
 
 
@@ -17,6 +16,9 @@ class MotherShip(BaseModel):
 
     def __str__(self):
         return str(self.id)
+    @property
+    def vacancy(self):
+        return self.capacity - Ship.objects.filter(mother_ship=self).count()
 
     @property
     def has_vacancy(self):
