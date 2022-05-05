@@ -40,14 +40,6 @@ class MotherShipDetails(APIView):
         serializer = MotherShipDetailsSerializer(mother_ship)
         return Response(serializer.data)
 
-    def put(self, request, pk):
-        mother_ship = self.get_object(pk)
-        serializer = MotherShipDetailsSerializer(mother_ship, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     def delete(self, request, pk):
         mother_ship = self.get_object(pk)
         mother_ship.delete()
@@ -101,17 +93,6 @@ class ShipDetails(APIView):
         serializer = ShipDetailsSerializer(ship)
         return Response(serializer.data)
 
-    def put(self, request, pk):
-        from_ship = request.data['from_ship']
-        to_ship = request.data['to_ship']
-        name = request.data['name']
-        ship = self.get_object(pk)
-        serializer = ShipDetailsSerializer(ship, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     def delete(self, request, pk):
         ship = self.get_object(pk)
         ship.delete()
@@ -161,14 +142,6 @@ class CrewDetails(APIView):
         crew = self.get_object(pk)
         serializer = CrewDetailsSerializer(crew)
         return Response(serializer.data)
-
-    def put(self, request, pk):
-        crew = self.get_object(pk)
-        serializer = CrewDetailsSerializer(crew, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
         crew = self.get_object(pk)
