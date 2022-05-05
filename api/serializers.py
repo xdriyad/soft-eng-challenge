@@ -6,29 +6,27 @@ from api import services
 class CrewSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Crew
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'ship']
 
     def get_validation_exclusions(self):
         exclusions = super(CrewSerializer, self).get_validation_exclusions()
         return exclusions + ['id', 'created_at,', 'updated_at']
 
     def create(self, validated_data):
-        pass
-        return services.create_ship()
+        return services.create_crew(validated_data['ship'])
 
 
 class ShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ship
-        fields = ['id']
+        fields = ('id', 'mother_ship')
 
     def get_validation_exclusions(self):
         exclusions = super(ShipSerializer, self).get_validation_exclusions()
         return exclusions + ['id', 'created_at,', 'updated_at']
 
     def create(self, validated_data):
-        pass
-        return services.create_ship()
+        return services.create_ship(validated_data['mother_ship'])
 
 
 class CrewDetailsSerializer(serializers.ModelSerializer):

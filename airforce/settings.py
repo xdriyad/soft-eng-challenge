@@ -69,6 +69,10 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'api.utils.exception_handlers.custom_exception_handler'
+}
+
 WSGI_APPLICATION = 'airforce.wsgi.application'
 
 

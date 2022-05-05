@@ -1,5 +1,8 @@
+import json
+
 from django.shortcuts import render
-from django.http import Http404
+from api import services
+from django.http import Http404, JsonResponse
 from api.models import MotherShip, Ship, Crew
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -66,6 +69,17 @@ class ShipList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        count = request.data.get('count')
+        if count:
+            mother_ship_id = request.data.get('mother_ship')
+            services.validate_mothership_vacancy(mother_ship_id, count)
+            ships = []
+            for i in range(count):
+                serializer = ShipSerializer(data={'mother_ship': mother_ship_id})
+                if serializer.is_valid():
+                    serializer.save()
+                    ships.append(serializer.data)
+            return Response(ships, status=status.HTTP_201_CREATED)
         serializer = ShipSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

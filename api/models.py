@@ -1,8 +1,7 @@
 import names
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
-
+from api.utils.exception_handlers import MethodNotAllowed
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(db_index=True, default=timezone.now)
@@ -31,7 +30,8 @@ class Ship(BaseModel):
 
     def clean(self):
         if not self.mother_ship.has_vacancy:
-            raise ValidationError("Cannot create a ship, the MotherShip has no capacity")
+            raise MethodNotAllowed(detail="Cannot create a ship, the MotherShip has no capacity")
+        return True
 
     @property
     def has_vacancy(self):
@@ -47,7 +47,8 @@ class Crew(BaseModel):
 
     def clean(self):
         if not self.ship.has_vacancy:
-            raise ValidationError("Cannot create a crew, ship has no capacity")
+            raise MethodNotAllowed(detail="Cannot create a crew, ship has no capacity")
+        return True
 
     def __str__(self):
         return '{} : {}'.format(self.id, self.name)
