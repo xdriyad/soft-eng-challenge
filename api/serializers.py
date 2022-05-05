@@ -13,7 +13,7 @@ class CrewSerializer(serializers.ModelSerializer):
         return exclusions + ['id', 'created_at,', 'updated_at']
 
     def create(self, validated_data):
-        return services.create_crew(validated_data['ship'])
+        return services.create_crew(validated_data['ship'], name=validated_data['name'])
 
 
 class ShipSerializer(serializers.ModelSerializer):
@@ -39,6 +39,7 @@ class CrewDetailsSerializer(serializers.ModelSerializer):
     def get_validation_exclusions(self):
         exclusions = super(CrewDetailsSerializer, self).get_validation_exclusions()
         return exclusions + ['id', 'created_at,', 'updated_at']
+
 
 
 class MotherShipSerializer(serializers.ModelSerializer):

@@ -1,19 +1,17 @@
-import json
-
-from django.shortcuts import render
 from api import services
-from django.http import Http404, JsonResponse
+from django.http import Http404
 from api.models import MotherShip, Ship, Crew
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.serializers import MotherShipSerializer, MotherShipDetailsSerializer, ShipSerializer, ShipDetailsSerializer, \
     CrewDetailsSerializer, CrewSerializer
+from api.services import swap_crew
 
 
 class MotherShipList(APIView):
     """
-    List all mother_ship, or create a new snippet.
+    List all mother_ship, or create a new mother_ship.
     """
     def get(self, request):
         mother_ship = MotherShip.objects.all()
@@ -104,6 +102,9 @@ class ShipDetails(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk):
+        from_ship = request.data['from_ship']
+        to_ship = request.data['to_ship']
+        name = request.data['name']
         ship = self.get_object(pk)
         serializer = ShipDetailsSerializer(ship, data=request.data)
         if serializer.is_valid():
@@ -135,6 +136,14 @@ class CrewList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        from_ship_id = request.data['from_ship']
+        to_ship_id = request.data['to_ship']
+        name = request.data['name']
+        crew = swap_crew(from_ship_id, to_ship_id, name)
+        serializer = CrewSerializer(crew)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
 
 class CrewDetails(APIView):
