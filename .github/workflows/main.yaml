@@ -34,4 +34,5 @@ jobs:
 #        env:
 #          DJANGO_SETTINGS_MODULE: project.settings
 #          SECRETS_FILE: .confidential/ci.json
-        run: poetry run python manage.py runtest
+        run: |
+          python manage.py test
