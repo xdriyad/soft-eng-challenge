@@ -6,7 +6,7 @@ from api import models, services
 class CrewSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Crew
-        fields = ['id', 'name', 'ship']
+        fields = ('id', 'name', 'ship',)
 
     def get_validation_exclusions(self):
         exclusions = super(CrewSerializer, self).get_validation_exclusions()
@@ -19,7 +19,7 @@ class CrewSerializer(serializers.ModelSerializer):
 class ShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ship
-        fields = ('id', 'mother_ship')
+        fields = ('id', 'mother_ship',)
 
     def get_validation_exclusions(self):
         exclusions = super(ShipSerializer, self).get_validation_exclusions()
@@ -34,7 +34,7 @@ class CrewDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Crew
-        fields = ['id', 'name', 'created_at', 'updated_at', 'ship']
+        fields = ('id', 'name', 'created_at', 'updated_at', 'ship',)
 
     def get_validation_exclusions(self):
         exclusions = super(CrewDetailsSerializer, self).get_validation_exclusions()
@@ -45,7 +45,7 @@ class CrewDetailsSerializer(serializers.ModelSerializer):
 class MotherShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MotherShip
-        fields = ['id']
+        fields = ('id',)
 
     def get_validation_exclusions(self):
         exclusions = super(MotherShipSerializer, self).get_validation_exclusions()
@@ -61,7 +61,7 @@ class ShipDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Ship
-        fields = ('id', 'created_at', 'mother_ship', 'crew')
+        fields = ('id', 'created_at', 'mother_ship', 'crew',)
 
     def get_validation_exclusions(self):
         exclusions = super(ShipDetailsSerializer, self).get_validation_exclusions()
@@ -73,7 +73,7 @@ class MotherShipDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.MotherShip
-        fields = ['id', 'created_at', 'updated_at', 'vacancy', 'ships']
+        fields = ('id', 'created_at', 'updated_at', 'vacancy', 'ships',)
 
     def get_validation_exclusions(self):
         exclusions = super(MotherShipDetailsSerializer, self).get_validation_exclusions()

@@ -1,10 +1,11 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 
+class ApiTestCase(APITestCase):
 
-# Create your tests here.
-def test_foo():
-    assert True
+    def test_crew_swap(self):
+        assert True
 
-
-def test_bar():
-    assert True
+    # Test Create
+    # test ship create with count
+    # test
+    # Test crew swap

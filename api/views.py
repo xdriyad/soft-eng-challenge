@@ -12,9 +12,6 @@ from api.services import swap_crew
 
 
 class MotherShipList(APIView):
-    """
-    List all mother_ship, or create a new mother_ship.
-    """
     def get(self, request):
         mother_ship = MotherShip.objects.all()
         serializer = MotherShipSerializer(mother_ship, many=True)
@@ -26,11 +23,9 @@ class MotherShipList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+
 class MotherShipDetails(APIView):
-    """
-    Retrieve, update or delete a mother_ship instance.
-    """
     def get_object(self, pk):
         try:
             return MotherShip.objects.get(pk=pk)
@@ -51,10 +46,6 @@ class MotherShipDetails(APIView):
 
 
 class ShipList(APIView):
-    """
-    List all ship, or create a new snippet.
-    """
-
     def get(self, request):
         ship = Ship.objects.all()
         serializer = ShipSerializer(ship, many=True)
@@ -80,10 +71,6 @@ class ShipList(APIView):
 
 
 class ShipDetails(APIView):
-    """
-    Retrieve, update or delete a ship instance.
-    """
-
     def get_object(self, pk):
         try:
             return Ship.objects.get(pk=pk)
@@ -104,9 +91,6 @@ class ShipDetails(APIView):
 
 
 class CrewList(APIView):
-    """
-    List all crew, or create a new snippet.
-    """
 
     def get(self, request):
         crew = Crew.objects.all()
@@ -130,9 +114,6 @@ class CrewList(APIView):
 
 
 class CrewDetails(APIView):
-    """
-    Retrieve, update or delete a crew instance.
-    """
 
     def get_object(self, pk):
         try:

@@ -15,8 +15,6 @@ class BaseModel(models.Model):
 class MotherShip(BaseModel):
     capacity = models.IntegerField(default=9)
 
-    def __str__(self):
-        return str(self.id)
     @property
     def vacancy(self):
         return self.capacity - Ship.objects.filter(mother_ship=self).count()
@@ -24,6 +22,9 @@ class MotherShip(BaseModel):
     @property
     def has_vacancy(self):
         return self.capacity > Ship.objects.filter(mother_ship=self).count()
+
+    def __str__(self):
+        return 'ID: {}'.format(self.id)
 
 
 class Ship(BaseModel):
@@ -40,7 +41,7 @@ class Ship(BaseModel):
         return self.capacity > Crew.objects.filter(ship=self.id).count()
 
     def __str__(self):
-        return str(self.id)
+        return 'ID: {}'.format(self.id)
 
 
 class Crew(BaseModel):
