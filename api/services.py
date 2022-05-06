@@ -1,8 +1,9 @@
 from django.http import Http404
-
-from api.models import MotherShip, Ship, Crew
-from api.utils.exception_handlers import MethodNotAllowed
 from django.shortcuts import get_object_or_404
+
+from api.models import Crew, MotherShip, Ship
+from api.utils.exception_handlers import MethodNotAllowed
+
 
 def create_mother_ship():
     mother_ship = MotherShip.objects.create()

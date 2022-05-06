@@ -1,11 +1,13 @@
-from api import services
 from django.http import Http404
-from api.models import MotherShip, Ship, Crew
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
-from api.serializers import MotherShipSerializer, MotherShipDetailsSerializer, ShipSerializer, ShipDetailsSerializer, \
-    CrewDetailsSerializer, CrewSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from api import services
+from api.models import Crew, MotherShip, Ship
+from api.serializers import (CrewDetailsSerializer, CrewSerializer,
+                             MotherShipDetailsSerializer, MotherShipSerializer,
+                             ShipDetailsSerializer, ShipSerializer)
 from api.services import swap_crew
 
 

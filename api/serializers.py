@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from api import models
-from api import services
+
+from api import models, services
 
 
 class CrewSerializer(serializers.ModelSerializer):

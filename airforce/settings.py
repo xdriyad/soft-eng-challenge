@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+
 from confidential import SecretsManager
 
 secret_file = Path.joinpath(Path(__file__).resolve().parent.parent, '.confidential/default.json')

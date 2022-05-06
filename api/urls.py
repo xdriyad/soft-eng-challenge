@@ -1,7 +1,7 @@
-from rest_framework.urlpatterns import format_suffix_patterns
 from django.urls import path
-from api import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
+from api import views
 
 urlpatterns = [
     path('mother-ship/', views.MotherShipList.as_view()),

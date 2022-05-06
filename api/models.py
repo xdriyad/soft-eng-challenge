@@ -1,6 +1,7 @@
 import names
 from django.db import models
 from django.utils import timezone
+
 from api.utils.exception_handlers import MethodNotAllowed
 
 

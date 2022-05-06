@@ -31,8 +31,5 @@ jobs:
 #        run: poetry run black . --check
 
       - name: Test
-#        env:
-#          DJANGO_SETTINGS_MODULE: project.settings
-#          SECRETS_FILE: .confidential/ci.json
         run: |
-          python manage.py test
+          poetry run python manage.py
