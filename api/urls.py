@@ -2,8 +2,10 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from api import views
+from api.documentation import index
 
 urlpatterns = [
+    path('', index, name='documentation'),
     path('mothership/', views.MotherShipList.as_view(), name='mothership_list'),
     path('mothership/<int:pk>', views.MotherShipDetails.as_view(), name='mothership_details'),
     path('ship/', views.ShipList.as_view(), name='ship_list'),
