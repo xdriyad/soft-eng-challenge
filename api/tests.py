@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase
 
-class ApiTestCase(APITestCase):
+class TestApi(APITestCase):
 
     def test_crew_swap(self):
         assert True
