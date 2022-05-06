@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "soft-eng-challenge"
+version = "0.1.0"
+description = "Assesment of flugel.it"
+authors = ["Omar Faruk Riyad <omar@mixrank.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "3.2.12"
+django-rest-framework = "^0.1.0"
+names = "^0.3.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
