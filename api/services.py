@@ -13,17 +13,15 @@ def create_mother_ship():
     return mother_ship
 
 def create_ship(mother_ship):
-    ship = Ship.objects.create(mother_ship=mother_ship)
-    if ship.clean():
-        ship.save()
+    if mother_ship.has_vacancy:
+        ship = Ship.objects.create(mother_ship=mother_ship)
         for i in range(3):
             create_crew(ship=ship)
-    return ship
+        return ship
 
-def create_crew(ship, name=None):
-    crew = Crew.objects.create(ship=ship, name=name)
-    if crew.clean():
-        crew.save()
+def create_crew(ship, **kwargs):
+    if ship.has_vacancy:
+        crew = Crew.objects.create(ship=ship, **kwargs)
         return crew
 
 def validate_mothership_vacancy(mother_ship_id, count):

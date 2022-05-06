@@ -19,7 +19,7 @@ class CrewSerializer(serializers.ModelSerializer):
 class ShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ship
-        fields = ('id', 'mother_ship',)
+        fields = ('id',)
 
     def get_validation_exclusions(self):
         exclusions = super(ShipSerializer, self).get_validation_exclusions()
@@ -61,7 +61,7 @@ class ShipDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Ship
-        fields = ('id', 'created_at', 'mother_ship', 'crew',)
+        fields = ('id', 'created_at', 'mother_ship', 'vacancy', 'crew',)
 
     def get_validation_exclusions(self):
         exclusions = super(ShipDetailsSerializer, self).get_validation_exclusions()
