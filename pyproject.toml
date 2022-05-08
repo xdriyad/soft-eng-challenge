@@ -2,7 +2,7 @@
 name = "soft-eng-challenge"
 version = "0.1.0"
 description = "Assesment of flugel.it"
-authors = ["Omar Faruk Riyad <omar@mixrank.com>"]
+authors = ["Omar Faruk Riyad <xdriyad@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
