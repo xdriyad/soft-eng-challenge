@@ -4,7 +4,7 @@ ship_create_schema = openapi.Schema(
         type=openapi.TYPE_OBJECT,
         properties={
             'count': openapi.Schema(type=openapi.TYPE_INTEGER, default=3, description='How many ships?'),
-            'mother_ship': openapi.Schema(type=openapi.TYPE_INTEGER, default=4, description='Mothership id'),
+            'mothership': openapi.Schema(type=openapi.TYPE_INTEGER, default=4, description='Mothership id'),
 })
 
 crew_create_schema = openapi.Schema(

@@ -15,11 +15,11 @@ class MotherShip(BaseModel):
 
     @property
     def vacancy(self):
-        return self.capacity - Ship.objects.filter(mother_ship=self).count()
+        return self.capacity - Ship.objects.filter(mothership=self).count()
 
     @property
     def has_vacancy(self):
-        return self.capacity > Ship.objects.filter(mother_ship=self).count()
+        return self.capacity > Ship.objects.filter(mothership=self).count()
 
     def __str__(self):
         return 'ID: {}'.format(self.id)
@@ -27,7 +27,7 @@ class MotherShip(BaseModel):
 
 class Ship(BaseModel):
     capacity = models.IntegerField(default=5)
-    mother_ship = models.ForeignKey(MotherShip, on_delete=models.CASCADE)
+    mothership = models.ForeignKey(MotherShip, on_delete=models.CASCADE)
 
     @property
     def vacancy(self):

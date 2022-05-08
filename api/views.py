@@ -17,8 +17,8 @@ class MotherShipList(APIView):
 
     @swagger_auto_schema(operation_id='Mothership List')
     def get(self, request):
-        mother_ship = MotherShip.objects.all()
-        serializer = MotherShipSerializer(mother_ship, many=True)
+        mothership = MotherShip.objects.all()
+        serializer = MotherShipSerializer(mothership, many=True)
         return Response(serializer.data)
 
     @swagger_auto_schema(operation_id='Mothership Create')
@@ -40,14 +40,14 @@ class MotherShipDetails(APIView):
 
     @swagger_auto_schema(operation_id='Mothership Details')
     def get(self, request, pk):
-        mother_ship = self.get_object(pk)
-        serializer = MotherShipDetailsSerializer(mother_ship)
+        mothership = self.get_object(pk)
+        serializer = MotherShipDetailsSerializer(mothership)
         return Response(serializer.data)
 
     @swagger_auto_schema(operation_id='Mothership Delete')
     def delete(self, request, pk):
-        mother_ship = self.get_object(pk)
-        mother_ship.delete()
+        mothership = self.get_object(pk)
+        mothership.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -65,11 +65,12 @@ class ShipList(APIView):
     def post(self, request):
         count = request.data.get('count')
         if count:
-            mother_ship_id = request.data.get('mother_ship')
-            services.validate_mothership_vacancy(mother_ship_id, count)
+            count = int(count)
+            mothership_id = request.data.get('mothership')
+            services.validate_mothership_vacancy(mothership_id, count)
             ships = []
             for i in range(count):
-                serializer = ShipSerializer(data={'mother_ship': mother_ship_id})
+                serializer = ShipSerializer(data={'mothership': mothership_id})
                 if serializer.is_valid():
                     serializer.save()
                     ships.append(serializer.data)

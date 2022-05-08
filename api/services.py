@@ -5,16 +5,16 @@ from api.models import Crew, MotherShip, Ship
 from api.utils.exception_handlers import MethodNotAllowed
 
 
-def create_mother_ship():
-    mother_ship = MotherShip.objects.create()
-    mother_ship.save()
+def create_mothership():
+    mothership = MotherShip.objects.create()
+    mothership.save()
     for i in range(3):
-        create_ship(mother_ship=mother_ship)
-    return mother_ship
+        create_ship(mothership=mothership)
+    return mothership
 
-def create_ship(mother_ship):
-    if mother_ship.has_vacancy:
-        ship = Ship.objects.create(mother_ship=mother_ship)
+def create_ship(mothership):
+    if mothership.has_vacancy:
+        ship = Ship.objects.create(mothership=mothership)
         for i in range(3):
             create_crew(ship=ship)
         return ship
@@ -24,12 +24,12 @@ def create_crew(ship, **kwargs):
         crew = Crew.objects.create(ship=ship, **kwargs)
         return crew
 
-def validate_mothership_vacancy(mother_ship_id, count):
+def validate_mothership_vacancy(mothership_id, count):
     try:
-        mother_ship = MotherShip.objects.get(id=mother_ship_id)
+        mothership = MotherShip.objects.get(id=mothership_id)
     except MotherShip.DoesNotExist:
         raise Http404("No Mothership matches the given query.")
-    if not mother_ship.vacancy >= count:
+    if not mothership.vacancy >= count:
         raise MethodNotAllowed(detail='Not enough vacancy on MotherShip')
 
 

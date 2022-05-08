@@ -19,15 +19,14 @@ class CrewSerializer(serializers.ModelSerializer):
 class ShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ship
-        fields = ('id',)
-        extra_kwargs = {'mother_ship': {'required': True, 'allow_blank': False}}
+        fields = ('id', 'mothership')
 
     def get_validation_exclusions(self):
         exclusions = super(ShipSerializer, self).get_validation_exclusions()
         return exclusions + ['id', 'created_at,', 'updated_at']
 
     def create(self, validated_data):
-        return services.create_ship(validated_data['mother_ship'])
+        return services.create_ship(validated_data['mothership'])
 
 
 class CrewDetailsSerializer(serializers.ModelSerializer):
@@ -53,16 +52,16 @@ class MotherShipSerializer(serializers.ModelSerializer):
         return exclusions + ['id', 'created_at,', 'updated_at']
 
     def create(self, validated_data):
-        return services.create_mother_ship()
+        return services.create_mothership()
 
 
 class ShipDetailsSerializer(serializers.ModelSerializer):
     crew = CrewSerializer(source='crew_set', many=True)
-    mother_ship = MotherShipSerializer()
+    mothership = MotherShipSerializer()
 
     class Meta:
         model = models.Ship
-        fields = ('id', 'created_at', 'mother_ship', 'vacancy', 'crew',)
+        fields = ('id', 'created_at', 'mothership', 'vacancy', 'crew',)
 
     def get_validation_exclusions(self):
         exclusions = super(ShipDetailsSerializer, self).get_validation_exclusions()
