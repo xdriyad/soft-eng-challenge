@@ -20,9 +20,10 @@ def create_ship(mothership):
         return ship
 
 def create_crew(ship, **kwargs):
-    if ship.has_vacancy:
-        crew = Crew.objects.create(ship=ship, **kwargs)
-        return crew
+    if not ship.has_vacancy:
+        raise MethodNotAllowed(detail='Not enough vacancy in the Ship')
+    return Crew.objects.create(ship=ship, **kwargs)
+
 
 def validate_mothership_vacancy(mothership_id, count):
     try:

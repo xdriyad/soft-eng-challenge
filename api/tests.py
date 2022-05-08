@@ -33,6 +33,19 @@ class TestApi(APITestCase):
         response = self.client.post(reverse('crew_list'), {'name': names.get_first_name(), 'ship': ship['id']})
         self.assertEqual(response.status_code, 201)
 
+    def test_default_create_crew(self):
+        ship = self.mothership['ships'][0]
+        response = self.client.get(reverse('ship_details', kwargs={'pk': ship['id']}))
+        self.assertEqual(len(response.data['crew']), 3)
+
+    def test_ship_vacancy(self):
+        ship = self.mothership['ships'][0]
+        for i in range(3):
+            response = self.client.post(reverse('crew_list'), {'name': names.get_first_name(), 'ship': ship['id']})
+        self.assertEqual(response.status_code, 405)
+        ship = self.client.get(reverse('ship_details', kwargs={'pk': ship['id']})).data
+        self.assertEqual(len(ship['crew']), 5)
+
     def test_swap_crew(self):
         from_ship = self.mothership['ships'][0]
         to_ship = self.mothership['ships'][1]
