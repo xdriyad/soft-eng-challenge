@@ -20,6 +20,7 @@ class ShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ship
         fields = ('id',)
+        extra_kwargs = {'mother_ship': {'required': True, 'allow_blank': False}}
 
     def get_validation_exclusions(self):
         exclusions = super(ShipSerializer, self).get_validation_exclusions()

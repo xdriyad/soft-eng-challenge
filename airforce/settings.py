@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
-    'rest_framework'
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,8 @@ TEMPLATES = [
 
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'api.utils.exception_handlers.custom_exception_handler'
+    'EXCEPTION_HANDLER': 'api.utils.exception_handlers.custom_exception_handler',
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 WSGI_APPLICATION = 'airforce.wsgi.application'
