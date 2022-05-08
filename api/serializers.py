@@ -41,7 +41,6 @@ class CrewDetailsSerializer(serializers.ModelSerializer):
         return exclusions + ['id', 'created_at,', 'updated_at']
 
 
-
 class MotherShipSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MotherShip

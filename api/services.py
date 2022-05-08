@@ -12,12 +12,14 @@ def create_mothership():
         create_ship(mothership=mothership)
     return mothership
 
+
 def create_ship(mothership):
     if mothership.has_vacancy:
         ship = Ship.objects.create(mothership=mothership)
         for i in range(3):
             create_crew(ship=ship)
         return ship
+
 
 def create_crew(ship, **kwargs):
     if not ship.has_vacancy:

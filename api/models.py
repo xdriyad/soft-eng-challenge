@@ -10,6 +10,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
+
 class MotherShip(BaseModel):
     capacity = models.IntegerField(default=9)
 
@@ -47,5 +48,3 @@ class Crew(BaseModel):
 
     def __str__(self):
         return '{} : {}'.format(self.id, self.name)
-
-
