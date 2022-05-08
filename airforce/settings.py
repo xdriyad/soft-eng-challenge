@@ -80,8 +80,7 @@ TEMPLATES = [
 
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'api.utils.exception_handlers.custom_exception_handler',
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+    'EXCEPTION_HANDLER': 'api.utils.exception_handlers.custom_exception_handler'
 }
 
 WSGI_APPLICATION = 'airforce.wsgi.application'
