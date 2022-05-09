@@ -29,6 +29,10 @@ class TestApi(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(len(response.data), 2)
 
+    def test_mothership_vacancy(self):
+        response = self.client.post(reverse('ship_list'), {'mothership': self.mothership['id'], 'count': 9})
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+
     def test_create_crew(self):
         ship = self.mothership['ships'][0]
         response = self.client.post(reverse('crew_list'), {'name': names.get_first_name(), 'ship': ship['id']})
