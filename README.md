@@ -1,3 +1,4 @@
+
 # Software Engineering Challenge
 Challenge for selecting Software engineers.
 
@@ -44,3 +45,13 @@ Complete the following checklist
     5. Request body
     6. Response body
     7. Status code
+
+### Implemented
+#### Documentation
+    - localserver/api/docs # API Documentation
+    - localserver/api/playground # Interactive Api Documentation
+#### Run the following commands in terminal
+    $ poetry shell
+    $ poetry install
+    $ python manage.py runserver # Open Dev Server
+    $ python manage.py test # Run tests
